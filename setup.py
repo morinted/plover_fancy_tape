@@ -11,8 +11,8 @@ class CustomBuildPy(build_py):
 cmdclass['build_py'] = CustomBuildPy
 
 setup(
-    name="Plover: Fancy Tape",
-    version="0.0.1",
+    name="plover_fancy_tape",
+    version="0.0.2",
     description="Paper tape, but with fancy fading",
     author="Ted Morin",
     author_email="morinted@gmail.com",

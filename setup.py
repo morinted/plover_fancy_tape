@@ -1,10 +1,14 @@
 from setuptools import setup
+from setuptools.command.build_py import build_py
+from pyqt_distutils.build_ui import build_ui
+cmdclass = {"build_ui": build_ui}
 
-try:
-    from pyqt_distutils.build_ui import build_ui
-    cmdclass = {"build_ui": build_ui}
-except ImportError:
-    cmdclass = {}
+class CustomBuildPy(build_py):
+    def run(self):
+        self.run_command('build_ui')
+        build_py.run(self)
+
+cmdclass['build_py'] = CustomBuildPy
 
 setup(
     name="Plover: Fancy Tape",

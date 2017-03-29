@@ -43,6 +43,8 @@ class FancyTape(Tool, Ui_FancyTape):
         self._strokes = []
         self._all_keys = None
         self._history_size = 2000000
+        self._font_color = QColor(0x2B, 0xFA, 0x33)
+        self._glow_color = QColor(0, 0, 0)
         self._timer = QTimer(self)
         self._timer.timeout.connect(self.on_timer_tick)
         self._timer.setInterval(100)
@@ -52,14 +54,20 @@ class FancyTape(Tool, Ui_FancyTape):
         self.on_stroke(Stroke(system.KEYS))
         engine.signal_connect('stroked', self.on_stroke)
 
+    @staticmethod
+    def _set_label_color(label, color, opacity=255):
+        label.setStyleSheet(
+            'color: rgba(%s, %s, %s, %s)' % (
+                color.red(), color.green(), color.blue(), opacity
+            )
+        )
+
     def on_timer_tick(self):
         strokes = []
         for label, opacity in self._strokes:
             opacity -= 10
             if 0 < opacity < 255:
-                label.setStyleSheet(
-                    'color: rgba(0, 0, 0, %s)' % opacity
-                )
+                self._set_label_color(label, self._font_color, opacity)
             if opacity > 0:
                 strokes.append((label, opacity))
             else:
@@ -91,7 +99,8 @@ class FancyTape(Tool, Ui_FancyTape):
         effect.setXOffset(0)
         effect.setYOffset(0)
         effect.setBlurRadius(10)
-        effect.setColor(QColor(255, 255, 255))
+        effect.setColor(self._glow_color)
+        self._set_label_color(label, self._font_color)
         label.setText(text)
         label.setGraphicsEffect(effect)
         font = QFont()

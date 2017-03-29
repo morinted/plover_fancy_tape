@@ -20,13 +20,13 @@ setup(
     install_requires=[
         "plover>=4.0.0.dev0",
     ],
-    py_modules=[
+    packages=[
         'fancy_tape',
     ],
     include_package_data=True,
     entry_points="""
     [plover.gui.qt.tool]
-    fancy_tape = fancy_tape:FancyTape
+    fancy_tape = fancy_tape.fancy_tape:FancyTape
     """,
     cmdclass=cmdclass,
     setup_requires = [

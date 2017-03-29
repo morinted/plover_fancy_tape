@@ -1,4 +1,3 @@
-
 import time
 
 from PyQt5.QtCore import Qt, QTimer
@@ -8,12 +7,12 @@ from PyQt5.QtWidgets import (
     QBoxLayout, QGraphicsDropShadowEffect)
 
 from plover import system
-from plover.gui_qt.fancy_tape_ui import Ui_FancyTape
-
 from plover.gui_qt.i18n import get_gettext
 from plover.gui_qt.utils import ToolBar
 from plover.gui_qt.tool import Tool
 from plover.steno import Stroke
+
+from fancy_tape.fancy_tape_ui import Ui_FancyTape
 
 _ = get_gettext()
 

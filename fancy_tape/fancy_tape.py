@@ -22,7 +22,7 @@ class FancyTape(Tool, Ui_FancyTape):
     ''' Paper tape display of strokes. '''
 
     TITLE = _('Fancy Tape')
-    ICON = ':/tape.svg'
+    ICON = ':/fancy_tape/fancy_tape.svg'
     ROLE = 'fancy_tape'
 
     def __init__(self, engine):

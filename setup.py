@@ -12,7 +12,7 @@ cmdclass['build_py'] = CustomBuildPy
 
 setup(
     name="plover_fancy_tape",
-    version="0.0.3",
+    version="0.0.4",
     description="Paper tape, but with fancy fading",
     author="Ted Morin",
     author_email="morinted@gmail.com",
